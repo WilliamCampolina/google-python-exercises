@@ -24,7 +24,13 @@
 # So donuts(5) returns 'Number of donuts: 5'
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
-    return count < 10 and (" ".join(["Number of donuts:",str(count)])) or (" ".join(["Number of donuts:","many"]))
+
+    if count <10:
+        result = "Number of donuts: " + str(count)
+    else:
+        result = "Number of donuts: many"
+
+    return  result
 
 # B. both_ends
 # Given a string s, return a string made of the first 2
@@ -32,7 +38,12 @@ def donuts(count):
 # so 'spring' yields 'spng'. However, if the string length
 # is less than 2, return instead the empty string.
 def both_ends(s):
-    return  len(s) >= 2 and (s[:2]+s[-2:]) or ("")
+    if len(s) > 2:
+        result = ''.join([s[:2],s[-2:]])
+    else:
+        result = ""
+    return  result
+
 
 # C. fix_start
 # Given a string s, return a string
@@ -44,7 +55,9 @@ def both_ends(s):
 # Hint: s.replace(stra, strb) returns a version of string s
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
-    return s[0]+s[1:].replace(s[0],'*')
+    #strings são imutaveis
+    return ''.join([s[0], s.replace(s[0],'*')[1:]])
+
 
 # D. MixUp
 # Given strings a and b, return a single string with a and b separated
@@ -54,7 +67,9 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    return " ".join([b[:2]+a[2:],a[:2]+b[2:]])
+    primeira = a[:2] + b[2:]
+    segunda =  b[:2] + a[2:]
+    return ' '.join([segunda,primeira])
 
 
 # Provided simple test() function used in main() to print

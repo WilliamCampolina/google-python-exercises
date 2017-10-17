@@ -22,8 +22,12 @@
 # and last chars of the string are the same.
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
-    # +++your code here+++
-    return
+    count = 0
+    for item in words:
+        if (len(item) >= 2) and (item[0] == item[-1]):
+            count += 1
+
+    return count
 
 
 # B. front_x
@@ -34,8 +38,16 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-    # +++your code here+++
-    return
+    list_x = []
+    list_all = []
+    words.sort()
+    for item in words:
+        if item[0] == 'x':
+            list_x.append(item)
+        else:
+            list_all.append(item)
+
+    return list_x + list_all
 
 
 # C. sort_last
@@ -44,10 +56,15 @@ def front_x(words):
 # e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
-def sort_last(tuples):
-    # +++your code here+++
-    return
+def last(a):
+    return a[-1]
 
+def sort_last(tuples):
+    #vi alguns fazendo mas não entendi ...
+    #será que quando chamo a função sorted e passo para a função key uma outra função na hora dela ordenar ela sabe
+    #que tera que passar o elemento para ela last(a) o 'a' ela é quem decide?
+    #return sorted(tuples, key=last)
+    return
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.

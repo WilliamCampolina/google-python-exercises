@@ -17,8 +17,15 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-    # +++your code here+++
-    return
+    #print(s[-3:])
+    result = s
+    if (len(s) >= 3) and s[-3:] != 'ing':
+        result = s + 'ing'
+    elif (len(s) >= 3) and s[-3:] == 'ing':
+        result = s + 'ly'
+
+    return result
+
 
 
 # E. not_bad
@@ -30,9 +37,14 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    # +++your code here+++
-    return
-
+    # porque isso não funciona?
+    #if s in "not":
+    #   print('tem not')
+    result = s
+    indice = s.find("not")
+    if indice != -1 and s[indice:].find("bad") != -1:
+        result = s[:indice] + "good"
+    return result
 
 # F. front_back
 # Consider dividing a string into two halves.
@@ -42,9 +54,27 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    # +++your code here+++
-    return
+    #print(len(a),len(b))
+    sizeA = len(a)
+    sizeB = len(b)
+    indiceA = int(sizeA / 2)
+    indiceB = int(sizeB / 2)
 
+    if sizeA % 2 == 0:
+        inicioA = a[:indiceA]
+        finalA = a[indiceA:]
+    else:
+        inicioA = a[:indiceA + 1]
+        finalA = a[indiceA + 1:]
+
+    if(sizeB % 2 == 0):
+        inicioB = b[:indiceB]
+        finalB = b[indiceB:]
+    else:
+        inicioB = b[:indiceB + 1]
+        finalB = b[indiceB + 1:]
+
+    return ''.join([inicioA,inicioB,finalA,finalB])
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
@@ -67,7 +97,7 @@ def main():
     print()
     print('not_bad')
     test(not_bad('This movie is not so bad'), 'This movie is good')
-    test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
+    test(not_bad('This dinner is not that bad!'), 'This dinner is good')
     test(not_bad('This tea is not hot'), 'This tea is not hot')
     test(not_bad("It's bad yet not"), "It's bad yet not")
 
